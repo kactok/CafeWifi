@@ -19,8 +19,8 @@ db.init_app(app)
 # create DB columns
 class CafeData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    cafe_name = db.Column(db.String(250), unique=True, nullable=False)
-    cafe_summary = db.Column (db.String(250), nullable=False)
+    cafe_name = db.Column(db.String(500), unique=True, nullable=False)
+    cafe_summary = db.Column(db.String(250), nullable=False)
     cafe_map_url = db.Column(db.String(500), nullable=False)
     cafe_img_url = db.Column(db.String(500), nullable=False)
     cafe_rating = db.Column(db.String(250), nullable=False)
