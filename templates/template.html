@@ -1,10 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cafe&Wifi</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href={{url_for('static',filename='styles.css')}} />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Cafe&Wifi</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Add</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Main picture -->
+    <div
+      class="position-relative overflow-hidden p-3 p-md-5 text-center bg-body-tertiary"
+      style="
+        height: 40vw;
+        background-image: linear-gradient(
+            rgba(1, 1, 1, 0.8),
+            rgba(1, 1, 1, 0.8)
+          ),
+          url({{url_for('static', filename = 'pexels-viktoria-alipatova-2074130.jpg')}});
+        background-size: cover;
+        background-position: center;
+      "
+    >
+      <div class="col-md-6 p-lg-5 mx-auto my-5">
+        <h1 class="display-3 fw-bold" style="color: white">
+          Find&nbspthe&nbspbest place for coffee
+        </h1>
+        <div class="d-flex gap-3 justify-content-center lead fw-normal">
+          <a
+            class="icon-link"
+            style="color: white; text-decoration: none"
+            href="#"
+          >
+            API
+            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+          </a>
+          <a
+            class="icon-link"
+            style="color: white; text-decoration: none"
+            href="#"
+          >
+            Contact
+            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+          </a>
+        </div>
+      </div>
+      <div
+        class="product-device product-device-2 shadow-sm d-none d-md-block"
+      ></div>
+    </div>
+    <!-- Main content -->
+    <main>
+      <div class="container-xl">
+        <div class="row justify-content-center">
+          <div
+            class="col-xxl col-lg-4 col-md-6 col-sm-12 card m-4"
+            style="width: 18rem"
+          >
+            <img
+              src="https://madameedith.com/wp-content/uploads/2023/07/20230702_181752-1024x768.jpg"
+              class="card-img-top mt-2"
+              alt="cafe_photo"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Cofe Name</h5>
+              <p class="card-text"><i>Przemysl, Polska</i></p>
+              <p>Rating: ⭐⭐⭐⭐⭐</p>
+              <p>A small place where u can chill and drink some good coffee</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Seats: 52</li>
+              <li class="list-group-item">Wifi: ✔️</li>
+              <li class="list-group-item">Toilet: ✔️</li>
+              <li class="list-group-item">Coffee price: 10 zl</li>
+              <li class="list-group-item"><a href="">Google Maps</a></li>
+            </ul>
+            <div class="card-body">
+              <div style="text-align: right">
+                <a href="#" class="card-link">Edit</a>
+                <a href="#" class="card-link">Delete</a>
+              </div>
+            </div>
+            <p style="text-align: right"><i>Last updated: 04.11.2023</i></p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row">
+        <div class="col-12 col-md">
+          <small class="d-block mb-3 text-body-secondary"
+            >© 2023 Kacper Tokarski</small
+          >
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

@@ -1,0 +1,10 @@
+body{
+    background-color: #F5F5F5;
+}
+.navigation{
+    background-color: #DFD7BF
+}
+
+.navigation > a{
+    color: #3F2305
+}

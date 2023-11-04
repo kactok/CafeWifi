@@ -33,14 +33,14 @@ class CafeData(db.Model):
 
 
 # Create db. Uncomment for first app run
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 
 @app.route('/')
 def main():
     """display main page"""
-    return "Hello"
+    return render_template('index.html')
 
 
 @app.route('/add')
