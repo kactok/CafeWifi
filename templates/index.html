@@ -46,27 +46,28 @@
 <main>
       <div class="container-xl">
         <div class="row justify-content-center">
+          {% for cafe in cafes%}
           <div
             class="col-xxl col-lg-4 col-md-6 col-sm-12 card m-4"
             style="width: 18rem"
           >
             <img
-              src="https://madameedith.com/wp-content/uploads/2023/07/20230702_181752-1024x768.jpg"
+              src="{{cafe.cafe_img_url}}"
               class="card-img-top mt-2"
               alt="cafe_photo"
             />
             <div class="card-body">
-              <h5 class="card-title">Cofe Name</h5>
-              <p class="card-text"><i>Przemysl, Polska</i></p>
-              <p>Rating: ⭐⭐⭐⭐⭐</p>
-              <p>A small place where u can chill and drink some good coffee</p>
+              <h5 class="card-title">{{cafe.cafe_name}}</h5>
+              <p class="card-text"><i>{{cafe.cafe_location}}</i></p>
+              <p>Rating: {{cafe.cafe_rating}}</p>
+              <p>{{cafe.cafe_summary|safe}}</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Seats: 52</li>
-              <li class="list-group-item">Wifi: ✔️</li>
-              <li class="list-group-item">Toilet: ✔️</li>
-              <li class="list-group-item">Coffee price: 10 zl</li>
-              <li class="list-group-item"><a href="">Google Maps</a></li>
+              <li class="list-group-item">Seats: {{cafe.cafe_seats}}</li>
+              <li class="list-group-item">Wifi: {{cafe.cafe_wifi}}</li>
+              <li class="list-group-item">Toilet: {{cafe.cafe_toilet}}</li>
+              <li class="list-group-item">Coffee price: {{cafe.cafe_price}}</li>
+              <li class="list-group-item"><a href="{{cafe.cafe_map_url}}">Google Maps</a></li>
             </ul>
             <div class="card-body">
               <div style="text-align: right">
@@ -74,8 +75,9 @@
                 <a href="#" class="card-link">Delete</a>
               </div>
             </div>
-            <p style="text-align: right"><i>Last updated: 04.11.2023</i></p>
+            <p style="text-align: right"><i>Last updated: {{cafe.date}}</i></p>
           </div>
+          {%endfor%}
         </div>
       </div>
     </main>

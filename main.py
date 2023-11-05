@@ -48,7 +48,7 @@ def main():
     result = db.session.execute(db.select(CafeData))
     cafes = result.scalars().all()
     """display main page"""
-    return render_template('index.html')
+    return render_template('index.html', cafes=cafes)
 
 
 @app.route('/add', methods=['POST', 'GET'])
