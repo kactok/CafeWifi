@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'template.html' %}
+{% from "bootstrap5/form.html" import render_form %}
 
-</body>
-</html>
+{% block content %}
+<div
+      class="position-relative overflow-hidden p-3 p-md-5 text-center bg-body-tertiary"
+      style="
+        height: 40vw;
+        background-image: linear-gradient(
+            rgba(1, 1, 1, 0.8),
+            rgba(1, 1, 1, 0.8)
+          ),
+          url({{url_for('static', filename = 'pexels-viktoria-alipatova-2074130.jpg')}});
+        background-size: cover;
+        background-position: center;
+      "
+    >
+      <div class="col-md-6 p-lg-5 mx-auto my-5">
+        <h1 class="display-3 fw-bold" style="color: white">
+          Add new cafe
+        </h1>
+      </div>
+      <div
+        class="product-device product-device-2 shadow-sm d-none d-md-block"
+      ></div>
+    </div>
+{{ ckeditor.load() }}
+<div class="container-xl" style="margin-top: 50px">
+    <div class="row justify-content-center">
+        {% with messages = get_flashed_messages()%}
+            {%if messages %}
+                {% for message in messages %}
+                    <p class="flash" style="color:red">{{ message }}</p>
+                {% endfor %}
+            {%endif%}
+        {% endwith %}
+        {{render_form(add_form, novalidate=True)}}
+    </div>
+</div>
+{% endblock %}
