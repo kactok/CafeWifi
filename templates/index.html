@@ -48,8 +48,8 @@
         <div class="row justify-content-center">
           {% for cafe in cafes%}
           <div
-            class="col-xxl col-lg-4 col-md-6 col-sm-12 card m-4"
-            style="width: 18rem"
+            class="col-xxl-4 col-lg-4 col-md-6 col-sm-12 card m-4"
+            style="width: 20rem"
           >
             <img
               src="{{cafe.cafe_img_url}}"
@@ -66,13 +66,12 @@
               <li class="list-group-item">Seats: {{cafe.cafe_seats}}</li>
               <li class="list-group-item">Wifi: {{cafe.cafe_wifi}}</li>
               <li class="list-group-item">Toilet: {{cafe.cafe_toilet}}</li>
-              <li class="list-group-item">Coffee price: {{cafe.cafe_price}}</li>
+              <li class="list-group-item">Coffee price: {{cafe.coffee_price}}</li>
               <li class="list-group-item"><a href="{{cafe.cafe_map_url}}">Google Maps</a></li>
             </ul>
             <div class="card-body">
               <div style="text-align: right">
-                <a href="#" class="card-link">Edit</a>
-                <a href="#" class="card-link">Delete</a>
+                <a href="{{url_for('patch', cafe_id=cafe.id)}}" class="card-link">Edit</a>
               </div>
             </div>
             <p style="text-align: right"><i>Last updated: {{cafe.date}}</i></p>
