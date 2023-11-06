@@ -2,10 +2,11 @@ from datetime import date
 from flask import Flask, abort, render_template, redirect, url_for, flash, jsonify, request
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
-from forms import AddCoffe
+from forms import AddCoffe, MailForm
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 import os
+import smtplib
 
 # Init app and database
 app = Flask(__name__)
@@ -62,9 +63,14 @@ def get_cafe(all_cafes: []):
 @app.route('/', methods=['GET', "POST"])
 def main():
     if request.method == 'POST':
+
         result = db.session.query(CafeData).where(CafeData.cafe_name == request.form.get('search'))
         cafes = [result.scalar()]
-        return render_template('index.html', cafes=cafes)
+        if cafes == [None]:
+            flash("No cafes with this name!")
+            return render_template('index.html', cafes=[], display=True)
+        else:
+            return render_template('index.html', cafes=cafes, display=False)
     # get data from BD
     result = db.session.execute(db.select(CafeData))
     cafes = result.scalars().all()
@@ -272,6 +278,23 @@ def add_cafe():
                 'success': 'New cafe has been added to DB'
             }}
             return jsonify(success)
+
+
+@app.route('/contact', methods=['POST', 'GET'])
+def send_mail():
+    """Send mail"""
+    my_email = os.environ.get("MAIL")
+    password = os.environ.get('PASSWORD')
+    mail_form = MailForm()
+    if mail_form.validate_on_submit():
+        with smtplib.SMTP('smtp.gmail.com') as connection:
+            connection.starttls()
+            connection.login(my_email, password)
+            connection.sendmail(my_email, my_email,
+                                msg=f"{mail_form.title.data}\n\n{mail_form.message.data}\nRegards,{mail_form.name.data}")
+
+        return render_template('contact.html', title='Mail sent', mail_form=mail_form)
+    return render_template('contact.html', title='Contact Us', mail_form=mail_form)
 
 
 if __name__ == '__main__':

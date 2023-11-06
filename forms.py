@@ -20,3 +20,10 @@ class AddCoffe(FlaskForm):
     cafe_map_url = StringField("Google Maps URL", validators=[DataRequired(), URL()])
     cafe_img_url = StringField("Cafe photo URL", validators=[DataRequired(), URL()])
     submit = SubmitField('Add')
+
+
+class MailForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
+    message = CKEditorField('Message', validators=[DataRequired()])
+    submit = SubmitField('Send')
